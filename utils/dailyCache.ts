@@ -4,7 +4,7 @@ import { scrapeNews } from "@utils/news";
 import cron from "node-cron";
 
 const client = new Redis(
-  `rediss://default:${process.env["REDIS_CACHE"]}@emerging-cougar-31836.upstash.io:6379`
+  `rediss://default:${process.env["REDIS_KEY"]}@emerging-cougar-31836.upstash.io:6379`
 );
 
 export async function getNews() {
