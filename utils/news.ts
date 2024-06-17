@@ -27,11 +27,17 @@ export async function scrapeNews() {
     // Perform your actions on the article page
     const news = await articlePage.evaluate(() => {
       const title = document.querySelector("h1.article__title")
-        .textContent as string;
+        ?.textContent as string;
       const description = document.querySelector("p.article__desc")
-        .textContent as string;
-      const content = document.querySelector("section.article__wrapper")
-        .textContent as string;
+        ?.textContent as string;
+      let content = document.querySelector("section.article__wrapper")
+        ?.textContent as string;
+
+      if (!content) {
+        content = document.querySelector("section.article__content")
+          ?.textContent as string;
+      }
+
       const date = new Date().toISOString();
 
       return {

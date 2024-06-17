@@ -1,5 +1,5 @@
 import figlet from "figlet";
-import { getNews } from "@utils/news";
+import { scrapeNews } from "@utils/news";
 
 const server = Bun.serve({
   port: 3000,
@@ -10,7 +10,7 @@ const server = Bun.serve({
       case "/":
         return new Response(figlet.textSync("Hello World!"));
       case "/news":
-        const news = await getNews();
+        const news = await scrapeNews();
 
         return new Response(JSON.stringify(news));
       default:
